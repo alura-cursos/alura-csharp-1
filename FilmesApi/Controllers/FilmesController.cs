@@ -1,4 +1,5 @@
 ﻿using FilmesAPI.Models;
+using FilmesAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,32 +13,33 @@ namespace FilmesApi.Controllers
     [Route("[controller]")]
     public class FilmesController : ControllerBase
     {
-        private static List<Filme> filmes = new List<Filme>();
-        private static int id = 1;
+
+        private IFilmesRepository _filmesRepository;
+
+        public FilmesController(IFilmesRepository filmesRepository)
+        {
+            _filmesRepository = filmesRepository;
+        }
+
 
         [HttpPost]
-        public IActionResult Post([FromBody] Filme filme)
+        public IActionResult AddMovie([FromBody] Filme filme)
         {
-            filme.Id = id++;
-            filmes.Add(filme);
+            _filmesRepository.AddMovie(filme);
             return CreatedAtAction(nameof(GetMovie), new { Id = filme.Id }, filme);
         }
 
         [HttpGet]
         public IActionResult GetAllMovies()
         {
-            if (filmes.ToArray().Length == 0)
-            {
-                return NoContent();
-            }
+            List<Filme> filmes = _filmesRepository.FindAllMovies();
             return Ok(filmes.ToArray());
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMovie(int id)
         {
-            Filme filme = filmes.FirstOrDefault(f => f.Id == id);
-            if (filme == null)
+            if (_filmesRepository.FindMovieById(id, out Filme filme) == null)
             {
                 return NotFound();
             }
