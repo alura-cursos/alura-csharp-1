@@ -32,8 +32,8 @@ namespace FilmesApi.Controllers
         [HttpGet]
         public IActionResult GetAllMovies()
         {
-            List<Filme> filmes = _filmesRepository.FindAllMovies();
-            return Ok(filmes.ToArray());
+            IEnumerable<Filme> filmes = _filmesRepository.FindAllMovies();
+            return Ok(filmes);
         }
 
         [HttpGet("{id}")]
