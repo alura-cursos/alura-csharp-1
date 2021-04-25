@@ -16,7 +16,7 @@ namespace FilmesApi.Controllers
         private static int id = 1;
 
         [HttpPost]
-        public void Post([FromBody] Filme filme)
+        public void AddMovie([FromBody] Filme filme)
         {
             filme.Id = id++;
             filmes.Add(filme);
