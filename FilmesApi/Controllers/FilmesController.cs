@@ -33,7 +33,7 @@ namespace FilmesApi.Controllers
         public IActionResult GetAllMovies()
         {
             List<Filme> filmes = _filmesRepository.FindAllMovies();
-            return Ok(filmes.ToArray());
+            return Ok(filmes);
         }
 
         [HttpGet("{id}")]
