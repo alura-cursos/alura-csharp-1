@@ -16,18 +16,18 @@ namespace FilmesAPI.Repositories
             _context = context;
         }
 
-        public void AddMovie(Filme filme)
+        public void AdicionaFilme(Filme filme)
         {
             _context.Filmes.Add(filme);
             _context.SaveChanges();
         }
 
-        public IEnumerable<Filme> FindAllMovies()
+        public IEnumerable<Filme> GetTodosOsFilmes()
         {
             return _context.Filmes;
         }
 
-        public Filme FindMovieById(int id, out Filme filme)
+        public Filme GetFilmePorId(int id, out Filme filme)
         {
             filme = _context.Filmes.FirstOrDefault(f => f.Id == id);
             return filme;
