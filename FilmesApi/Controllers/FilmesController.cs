@@ -23,23 +23,23 @@ namespace FilmesApi.Controllers
 
 
         [HttpPost]
-        public IActionResult AddMovie([FromBody] Filme filme)
+        public IActionResult AdicionaFilme([FromBody] Filme filme)
         {
-            _filmesRepository.AddMovie(filme);
+            _filmesRepository.AdicionaFilme(filme);
             return CreatedAtAction(nameof(GetMovie), new { Id = filme.Id }, filme);
         }
 
         [HttpGet]
         public IActionResult GetAllMovies()
         {
-            List<Filme> filmes = _filmesRepository.FindAllMovies();
+            List<Filme> filmes = _filmesRepository.GetTodosOsFilmes();
             return Ok(filmes);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMovie(int id)
         {
-            if (_filmesRepository.FindMovieById(id, out Filme filme) == null)
+            if (_filmesRepository.GetFilmePorId(id, out Filme filme) == null)
             {
                 return NotFound();
             }

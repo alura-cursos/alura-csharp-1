@@ -5,8 +5,8 @@ namespace FilmesAPI.Repositories
 {
     public interface IFilmesRepository
     {
-        void AddMovie(Filme filme);
-        List<Filme> FindAllMovies();
-        Filme FindMovieById(int id, out Filme filme);
+        void AdicionaFilme(Filme filme);
+        List<Filme> GetTodosOsFilmes();
+        Filme GetFilmePorId(int id, out Filme filme);
     }
 }

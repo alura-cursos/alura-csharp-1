@@ -11,18 +11,18 @@ namespace FilmesAPI.Repositories
         private List<Filme> filmes = new List<Filme>();
         private int id = 1;
 
-        public void AddMovie(Filme filme)
+        public void AdicionaFilme(Filme filme)
         {
             filme.Id = id++;
             filmes.Add(filme);
         }
 
-        public List<Filme> FindAllMovies()
+        public List<Filme> GetTodosOsFilmes()
         {
             return filmes;
         }
 
-        public Filme FindMovieById(int id, out Filme filme)
+        public Filme GetFilmePorId(int id, out Filme filme)
         {
             filme = filmes.FirstOrDefault(f => f.Id == id);
             return filme;
