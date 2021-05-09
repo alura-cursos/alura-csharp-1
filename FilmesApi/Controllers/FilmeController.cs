@@ -24,7 +24,7 @@ namespace FilmesApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllMovies()
+        public IActionResult RecuperaFilmes()
         {
             return Ok(filmes);
         }
