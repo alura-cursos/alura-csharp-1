@@ -15,8 +15,6 @@ namespace FilmesAPI.Models
         public int Duracao { get; set; }
         [StringLength(100, ErrorMessage = "O nome do diretor não pode exceder 100 caracteres")]
         public string Diretor { get; set; }
-        public DateTime Lancamento { get; set; }
         public string Genero { get; set; }
-        public double Faturamento { get; set; }
     }
 }
