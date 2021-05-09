@@ -21,7 +21,7 @@ namespace FilmesApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FilmeContext>(options => options.UseMySQL(Configuration.GetConnectionString("MovieConnection")));
+            services.AddDbContext<FilmeContext>(options => options.UseMySQL(Configuration.GetConnectionString("FilmeConnection")));
             services.AddScoped<IFilmesRepository, FilmesRepository>();
             services.AddControllers();
         }
