@@ -1,5 +1,4 @@
 using FilmesApi.Data;
-using FilmesAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +21,6 @@ namespace FilmesApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FilmeContext>(options => options.UseMySQL(Configuration.GetConnectionString("FilmeConnection")));
-            services.AddScoped<IFilmesRepository, FilmesRepository>();
             services.AddControllers();
         }
 
